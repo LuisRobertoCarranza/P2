@@ -2,11 +2,14 @@
     Listado clientes
     </h2>
     <div *ngIf="! clientes.length">No hay clientes por el momento</div>
-    <div>
-        <article *ngFor="let cliente of clientes">
-            <span>{{cliente.nombre}}</span>
-            <span>{{cliente.curp}}</span>
-            <span>{{cliente.direccion}}</span>
-            <span>{{cliente.sexo}}</span>
-        </article>
-    </div>
+    <table>
+        <tr *ngFor="let cliente of clientes">
+            <app-item-cliente [cliente]="cliente" (borrarCliente)="doBorrarCliente($event)">   
+            </app-item-cliente>
+            
+        </tr>
+ </table>
+
+    <p>
+        {{clientes$ | async | json}}
+    </p>
