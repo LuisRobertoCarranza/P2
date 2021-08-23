@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../clientes.service';
 import { Cliente, Grupo } from '../cliente.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-alta-cliente',
@@ -9,7 +11,9 @@ import { Cliente, Grupo } from '../cliente.model';
 })
 export class AltaClienteComponent implements OnInit {
 
-  cliente: Cliente = {
+  rutaListado: string="/listadoClientes";
+  cliente: Cliente = 
+  {
     id: 0,
     nombre: '',
     curp: '',
@@ -18,7 +22,10 @@ export class AltaClienteComponent implements OnInit {
   };
   grupos: Grupo[]=[];
 
-  constructor(private clientesService:ClientesService) { 
+  constructor(
+    private clientesService:ClientesService,
+    private router:Router
+    ) { 
 
   }
 
@@ -32,4 +39,5 @@ export class AltaClienteComponent implements OnInit {
     this.cliente = this.clientesService.nuevoCliente();
   }
 
+ 
 }
